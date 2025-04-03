@@ -1,5 +1,8 @@
 Début du test du nombre maximal de fichier...
 Taille maximale atteinte: 1000000 fichier
-Début du test de la taille maximale du fichier... NTFS taille cluser/bloc 4Ko
+Début du test de la taille maximale du fichier... NTFS taille cluser/bloc 4Ko, taille disque 1To
 Taille maximale du fichier atteinte: 952320 Mo
 Taille maximale atteinte : 930 Go
+Test des vitesses de lecture/écriture
+Temps d'écriture: 49908.29 ms
+Temps de lecture: 57306.04 ms

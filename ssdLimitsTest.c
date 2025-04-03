@@ -113,7 +113,7 @@ void test_read_write_speed() {
     gettimeofday(&end, NULL);
     
     double write_time = (end.tv_sec - start.tv_sec) * 1e6 + (end.tv_usec - start.tv_usec);
-    printf("Temps d'écriture: %.2f ms\n", write_time / 1000);
+    fprintf(log,"Temps d'écriture: %.2f ms\n", write_time / 1000);
     fclose(fp);
     
     fp = fopen(filename, "rb");
