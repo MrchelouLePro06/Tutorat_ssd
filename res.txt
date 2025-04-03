@@ -1,8 +1,18 @@
 Début du test du nombre maximal de fichier...
 Taille maximale atteinte: 1000000 fichier
-Début du test de la taille maximale du fichier... NTFS taille cluser/bloc 4Ko, taille disque 1To
+Début du test de la taille maximale du fichier... NTFS taille cluser/bloc 4Ko, taille disque 1To (ssd2f)
 Taille maximale du fichier atteinte: 952320 Mo
 Taille maximale atteinte : 930 Go
-Test des vitesses de lecture/écriture
+Test des vitesses de lecture/écriture pour 1Go
 Temps d'écriture: 49908.29 ms
 Temps de lecture: 57306.04 ms
+exFAT (usb)
+Test des vitesses de lecture/écriture pour 1Go
+Temps d'écriture: 21043.20 ms
+Temps de lecture: 1553.59 ms
+Début du test Ecriture/Lecture... pour 10 Mo
+Temps d'écriture: 7.30 ms
+Temps de lecture: 1.27 ms
+Début du test Ecriture/Lecture... pour 100 Mo
+Temps d'écriture: 93.88 ms
+Temps de lecture: 16.34 ms

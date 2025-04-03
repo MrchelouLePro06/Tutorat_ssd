@@ -20,7 +20,8 @@
 #endif
 
 #define FILE_PREFIX "file_"
-#define FILE_SIZE (1024L * 1024L * 1024L*10) // (1024 * 1024 * 10) = 10 Mo, (1024 * 1024 * 100) = 100 Mo, (1024L * 1024L * 1024L) = 1 Go
+#define BLOCK_SIZE (512 * 1024)  // (4*1024) = 4 Ko
+#define FILE_SIZE (1024 * 1024*10) // (1024 * 1024 * 10) = 10 Mo, (1024 * 1024 * 100) = 100 Mo, (1024L * 1024L * 1024L) = 1 Go
 #define MAX_FILES 1000000 // Nombre maximal de fichiers à tester
 
 void test_max_files() {
@@ -133,6 +134,61 @@ void test_read_write_speed() {
     free(buffer);
 }
 
+void test_block_access() {
+    char filename[] = "block_access_test.bin";
+    FILE *fp = fopen(filename, "wb+");
+    struct timeval start, end;
+
+    if (!fp) {
+        perror("Erreur ouverture fichier");
+        return;
+    }
+
+    // Allouer un buffer pour écrire/ lire les blocs
+    char *buffer = malloc(BLOCK_SIZE);
+    if (!buffer) {
+        perror("Erreur allocation mémoire");
+        fclose(fp);
+        return;
+    }
+    memset(buffer, 'A', BLOCK_SIZE);
+
+    // Test d'écriture pour différents blocs
+    gettimeofday(&start, NULL);
+    for (long i = 0; i < FILE_SIZE; i += BLOCK_SIZE) {
+        fseek(fp, i, SEEK_SET);  // Se déplacer à la position du bloc
+        fwrite(buffer, 1, BLOCK_SIZE, fp);
+        fsync(fileno(fp));  // Forcer l'écriture sur disque
+    }
+    gettimeofday(&end, NULL);
+    double write_time = (end.tv_sec - start.tv_sec) * 1e6 + (end.tv_usec - start.tv_usec);
+    if (write_time < 0) {
+        printf("Erreur de calcul du temps d'écriture\n");
+    } else {
+        printf("Temps d'ecriture pour %.2f Mo en blocs de %.2f Ko: %.2f ms\n", FILE_SIZE / (1024.0 * 1024), BLOCK_SIZE / 1024.0, write_time / 1000);
+    }
+
+    // Réinitialiser le fichier pour la lecture
+    fseek(fp, 0, SEEK_SET);
+
+    // Test de lecture pour différents blocs
+    gettimeofday(&start, NULL);
+    for (long i = 0; i < FILE_SIZE; i += BLOCK_SIZE) {
+        fseek(fp, i, SEEK_SET);  // Se déplacer à la position du bloc
+        fread(buffer, 1, BLOCK_SIZE, fp);
+    }
+    gettimeofday(&end, NULL);
+    double read_time = (end.tv_sec - start.tv_sec) * 1e6 + (end.tv_usec - start.tv_usec);
+    if (read_time < 0) {
+        printf("Erreur de calcul du temps de lecture\n");
+    } else {
+        printf("Temps de lecture pour %.2f Mo en blocs de %.2f Ko: %.2f ms\n", FILE_SIZE / (1024.0 * 1024), BLOCK_SIZE / 1024.0, read_time / 1000);
+    }
+
+    fclose(fp);
+    free(buffer);
+}
+
 int main() {
 	#ifdef q1
     printf("Test du nombre maximal de fichiers\n");
@@ -145,6 +201,11 @@ int main() {
     #elif q3
     printf("\nTest des vitesses de lecture/écriture\n");
     test_read_write_speed();
+
+    #elif q4
+    printf("\nTest cours acces aux blocs\n");
+    test_block_access();
+
     #endif
     return 0;
 }
