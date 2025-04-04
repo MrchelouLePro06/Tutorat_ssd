@@ -16,3 +16,45 @@ Temps de lecture: 1.27 ms
 Début du test Ecriture/Lecture... pour 100 Mo
 Temps d'écriture: 93.88 ms
 Temps de lecture: 16.34 ms
+brtfs (usb)
+Début du test Ecriture/Lecture...
+Temps d'écriture: 3.17 ms
+Temps de lecture: 1.89 ms
+Début du test Ecriture/Lecture...
+Temps d'écriture: 2.94 ms
+Temps de lecture: 1.89 ms
+Début du test Ecriture/Lecture...
+Temps d'écriture: 38.51 ms
+Temps de lecture: 22.22 ms
+Début du test Ecriture/Lecture...
+Temps d'écriture: 307.22 ms
+Temps de lecture: 216.39 ms
+ext4 (usb)
+Taille maximale atteinte: 244130 fichier
+Début du test Ecriture/Lecture...
+Temps d'écriture: 5.05 ms
+Temps de lecture: 1.59 ms
+Début du test Ecriture/Lecture...
+Temps d'écriture: 60.30 ms
+Temps de lecture: 37.83 ms
+Début du test Ecriture/Lecture...
+Temps d'écriture: 537.04 ms
+Temps de lecture: 180.04 ms
+Test cours acces aux blocs
+Temps d'ecriture pour 1024.00 Mo en blocs de 512.00 Ko: 5581.86 ms
+Temps de lecture pour 1024.00 Mo en blocs de 512.00 Ko: 144.17 ms
+F2FS (usb)
+Temps de lecture: 16.34 msDébut du test du nombre maximal de fichier...
+Taille maximale atteinte: 9784136 fichier (test creer 10M)
+Début du test Ecriture/Lecture...
+Temps d'écriture: 3.13 ms
+Temps de lecture: 1.38 ms
+Début du test Ecriture/Lecture...
+Temps d'écriture: 43.26 ms
+Temps de lecture: 18.22 ms
+Début du test Ecriture/Lecture...
+Temps d'écriture: 360.20 ms
+Temps de lecture: 183.40 ms
+Test cours acces aux blocs
+Temps d'ecriture pour 1024.00 Mo en blocs de 512.00 Ko: 4958.27 ms
+Temps de lecture pour 1024.00 Mo en blocs de 512.00 Ko: 145.28 ms

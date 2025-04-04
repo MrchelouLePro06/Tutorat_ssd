@@ -18,10 +18,19 @@
 #else
 #define TEST_DIR "./test_ssd"
 #endif
-
 #define FILE_PREFIX "file_"
 #define BLOCK_SIZE (512 * 1024)  // (4*1024) = 4 Ko
+
+#ifdef m100
+#define FILE_SIZE (1024 * 1024*100)
+
+#elif g1
+#define FILE_SIZE (1024L * 1024L * 1024L) 
+
+#else
 #define FILE_SIZE (1024 * 1024*10) // (1024 * 1024 * 10) = 10 Mo, (1024 * 1024 * 100) = 100 Mo, (1024L * 1024L * 1024L) = 1 Go
+
+#endif
 #define MAX_FILES 1000000 // Nombre maximal de fichiers à tester
 
 void test_max_files() {
